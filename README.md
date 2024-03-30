@@ -1,5 +1,7 @@
 # car-dealership
 
+![car-dealership-index.html page](https://github.com/rayray39/car-dealership/blob/main/car-dealership%201.png)
+
 ## General Description
 This is a simple website project built over a weekend that allows users to auction for cars (imagine eBay, but for cars only), similar to a car dealership. Users can **post a new auction listing**, **place bids** on other auction listings and **leave reviews**. Other features include a **Watchlist feature** - where users can add the auction listings, that they would like to keep an eye on, to a page for easier navigation. It also includes a **Category feature** - where users can quickly navigate to the type of car they are interested in looking at (such as SUV, Sedan, Supercar etc.).
 
