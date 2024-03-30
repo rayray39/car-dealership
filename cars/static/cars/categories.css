@@ -1,0 +1,24 @@
+#categories {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-link {
+    background-color: lavender;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    height: 85px;
+    margin-bottom: 10px;
+    font-size: 40px;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.category-link:hover {
+    background-color: thistle;
+    text-decoration: none;
+    color: inherit;
+}

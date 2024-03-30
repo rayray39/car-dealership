@@ -1,0 +1,35 @@
+{% extends "cars/layout.html" %}
+
+{% block body %}
+    <h2>Create A New Listing</h2>
+
+    <form action="{% url 'create_new_listing' %}" method="post">
+        {% csrf_token %}
+        <!-- the required field provides client-side validation, that the fields need to be filled in -->
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="title" placeholder="Title" required>
+        </div>
+        <div class="form-group">
+            <textarea autofocus class="form-control" name="description" rows="5" placeholder="Description" required></textarea>
+        </div>
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="price" placeholder="Price" required>
+        </div>
+        <div class="form-group">
+            <input autofocus class="form-control" type="text" name="image_url" placeholder="URL of Image">
+        </div>
+
+        <div class="form-group">
+            <select name="category" class="form-control">
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="super">Super</option>
+                <option value="luxury">Luxury</option>
+                <option value="electric">Electric</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Create Listing">
+    </form>
+{% endblock %}

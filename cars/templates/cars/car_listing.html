@@ -1,0 +1,116 @@
+{% extends "cars/layout.html" %}
+
+{% block body %}
+    <h2>{{ car.title }}</h2>
+
+    {% if congrats_msg %}
+        <div id="congrats_msg">
+            <h4>{{ congrats_msg }}</h4>
+        </div>
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="bid-messages">
+                {% if message.tags == "success" %}
+                    <div id="success-message">
+                        {{ message }}
+                    </div>
+                {% elif message.tags == "error" %}
+                    <div id="error-message">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div id="car-info">
+
+        <div id="car-image">
+            <img src="{{ car.image_url }}" alt="{{ car.title }}">
+        </div>
+
+        {% if user.is_authenticated and car.active %}
+            <!-- only authenticated users can add/remove listing to/from watchlist -->
+            {% if not inside_watchlist %}
+                <div>
+                    <!-- add to watchlist -->
+                    <form action="{% url 'add_to_watchlist' listing_id=car.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary" type="submit" value="Add To Watchlist" >
+                    </form>
+                </div>
+            {% elif inside_watchlist %}
+                <div>
+                    <!-- remove from watchlist -->
+                    <form action="{% url 'remove_from_watchlist' listing_id=car.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary" type="submit" value="Remove From Watchlist" >
+                    </form>
+                </div>
+            {% endif %}
+
+            {% if user.id == car.owner.id %}
+                <div>
+                    <!-- close the active listing, only owner can close listings -->
+                    <form action="{% url 'close_listing' listing_id=car.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary" type="submit" value="Close Listing" >
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div id="car-description">
+            <h3>Description</h3>
+            {{ car.description }}
+        </div>
+
+        <div id="car-price">
+            <h3>Current Price: ${{ car.price }}</h3>
+
+            {% if user.is_authenticated and car.active and user != car.owner %}
+                <!-- only authenticated user can place a bid, owner of listing should NOT be able to place bid -->
+                <div class="form-group">
+                    <form action="{% url 'place_bid' listing_id=car.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="form-control" type="number" name="new_bid" placeholder="Place Your Bid" required>
+                        <input class="btn btn-primary" type="submit" value="Submit" style="margin-top: 5px;">
+                    </form>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div>
+            <h3>Details</h3>
+            <ul id="details-section">
+                <li>Created By: {{ car.owner }}</li>
+                <li>Created On: {{ car.created_at }}</li>
+                <li>Category: {{ car.category }}</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Comments</h3>
+            <!-- only authenticated users can post comments, non-authenticated users can still see comments made -->
+            <ul id="comments-section">
+                {% for comment in comments %}
+                    <li>{{ comment.content }} - {{ comment.owner }}</li>
+                {% endfor %}
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="form-group">
+                    <form action="{% url 'make_comment' listing_id=car.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" name="content" placeholder="Add Your Comment" required>
+                        <input class="btn btn-primary" type="submit" value="Add" style="margin-top: 5px;">
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

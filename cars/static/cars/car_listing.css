@@ -1,0 +1,38 @@
+#car-info div {
+    margin-bottom: 20px;
+}
+
+#car-image img {
+    width: 70%;
+    height: auto;
+    max-height: 100%;
+    max-width: 70%;
+    object-fit: contain;
+}
+
+.bid-messages {
+    width: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#success-message {
+    background-color: mediumspringgreen;
+    height: 30px;
+}
+
+#error-message {
+    background-color: red;
+    height: 30px;
+}
+
+#comments-section {
+    list-style-type: none;
+}
+
+#comments-section li {
+    background-color: lightcyan;
+    margin-bottom: 5px;
+    padding: 10px;
+}

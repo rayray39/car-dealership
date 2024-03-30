@@ -1,0 +1,30 @@
+Car Dealership
+
+specification 1: log in, register, log out page [COMPLETED]
+
+specification 2: create a listing [COMPLETED]
+
+specification 3: index page to see all the active listings (title, description, current bid, time created) [COMPLETED]
+
+specification 4: authenticated users' functions
+- able to click on an active listing and see specific details about it [COMPLETED]
+- able to place bid on an active listing [COMPLETED]
+- able to comment and see comments [COMPLETED]
+- able to add to watchlist [COMPLETED]
+- able to remove from watchlist
+- owner of listing can close the listing, highest bidder will be notified [COMPLETED]
+
+specification 5: watchlist page [COMPLETED]
+- authenticated users can add active listings into their watchlist/remove active listings from their watchlist
+- similar to index page
+- if a listing is already added/removed from watchlist, then user cannot add/remove it again
+(for eg. if listing already inside user's watchlist, then user cannot add this listing into watchlist again)
+
+specification 6: comments [COMPLETED]
+- authenticated users can comment on active listings and see other comments
+
+specification 7: categories  [COMPLETED]
+- all users can see an overview of all the categories available
+- by clicking into one category, active listings that belong to that category will be shown. 
+
+admin site to control everything

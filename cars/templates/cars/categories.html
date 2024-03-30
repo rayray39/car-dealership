@@ -1,0 +1,19 @@
+{% extends "cars/layout.html" %}
+
+{% block body %}
+
+    <div id="categories">
+        <a class="category-link" href="{% url 'category' selected_category='sedan' %}">SEDAN</a>
+
+        <a class="category-link" href="{% url 'category' selected_category='suv' %}">SUV</a>
+    
+        <a class="category-link" href="{% url 'category' selected_category='super' %}">SUPER</a>
+    
+        <a class="category-link" href="{% url 'category' selected_category='luxury' %}">LUXURY</a>
+        
+        <a class="category-link" href="{% url 'category' selected_category='electric' %}">ELECTRIC</a>
+    
+        <a class="category-link" href="{% url 'category' selected_category='other' %}">OTHER</a>
+    </div>
+
+{% endblock %}

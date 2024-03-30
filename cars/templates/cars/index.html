@@ -1,0 +1,19 @@
+{% extends "cars/layout.html" %}
+
+{% block body %}
+    <h2>{{ h2_title }}</h2>
+
+    {% for car_listing in car_listings %} 
+        <a href="{% url 'car_listing' listing_id=car_listing.id %}" id="car-listing-a">
+            <div class="car-listing-card" style="margin-bottom: 20px;">
+                <img src="{{ car_listing.image_url }}" alt="{{ car_listing.title }}">
+                <div class="card-text">
+                    <h3>{{ car_listing.title }}</h3>
+                    <p>Description: {{ car_listing.description }}</p>
+                    <p>Current Bid: ${{ car_listing.price }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
+{% endblock %}
