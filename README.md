@@ -18,7 +18,7 @@ Make sure you have `python` and `django` installed in a virtual environment. Dow
 * urls.py (inside app) - the various url paths that will call the associated function in views.py to render a HTML page. 
 
 ## Lessons Learnt
-* developing an interactive website using a web framework like Django, Python, HTNL and CSS.
+* developing an interactive website using a web framework like Django, Python, HTML and CSS.
 * using Django models that allow easy interaction with data stored inside the database, removing the need to write SQL commands.
 * implementing client-side and server-side validation checks when filling up forms.
 * using flex layout in CSS.
